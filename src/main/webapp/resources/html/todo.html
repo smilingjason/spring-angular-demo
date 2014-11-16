@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>My todo list</title>
+
+<script type="text/javascript" src="../js/angular.min.js"></script>
+<script type="text/javascript" src="../js/todoApp.js"></script>
+<script type="text/javascript" src="../js/todoController.js"></script>
+<style>
+table, th , td {
+  border: 1px solid grey;
+  border-collapse: collapse;
+  padding: 5px;
+}
+table tr:nth-child(odd) {
+  background-color: #f1f1f1;
+}
+table tr:nth-child(even) {
+  background-color: #ffffff;
+}
+</style>
+</head>
+<body ng-app="todoApp">
+My Todo list: <br/>
+<div ng-controller="todoController">
+  <table border="1">
+  	<tr ng-repeat="todo in todos ">
+  		<td> {{ todo.id }} </td>
+  		<td> {{ todo.title }} </td>
+  		<td> <button ng-click="todoBiz.deleteTodo(todo.id)">Delete</button> </td>
+  	</tr>
+  </table>
+  <button ng-click="todoBiz.createTodo()">Create</button>
+  <button ng-click="todoBiz.modifyTodo()">Modify</button>
+  <div ng-show="isLoading">
+	  <img src="../images/loading.gif" />
+  </div>
+</div>
+
+</body>
+</html>
