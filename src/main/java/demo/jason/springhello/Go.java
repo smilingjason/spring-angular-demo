@@ -45,7 +45,7 @@ public class Go {
 		
 		//session.getTransaction().commit();		
 		
-		test2(sessionFactory);
+		test1(sessionFactory);
 		sessionFactory.close();
 	}
 	
@@ -54,10 +54,10 @@ public class Go {
 		session.beginTransaction();
 		
 		Resource r = new Resource();		
-		r.setName("humility");
+		r.setName("humility 2");
 		for (int i = 0; i < 10; i++) {
 			Event e = new Event();
-			e.setTitle("Jason wakes up");
+			e.setTitle("Jason wakes up " + i);
 			e.setTime(new java.util.Date());
 			
 			e.setResource(r);
