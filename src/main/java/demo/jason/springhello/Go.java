@@ -1,5 +1,6 @@
 package demo.jason.springhello;
 
+import org.hibernate.Hibernate;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
@@ -44,8 +45,8 @@ public class Go {
 		*/
 		
 		//session.getTransaction().commit();		
-		
-		test1(sessionFactory);
+		Resource r = getResource(sessionFactory);
+		test2(r, sessionFactory);
 		sessionFactory.close();
 	}
 	
@@ -68,19 +69,25 @@ public class Go {
 		session.getTransaction().commit();
 	}
 
-	private static void test2(SessionFactory sessionFactory) {
+	private static void test2(Resource r, SessionFactory sessionFactory) {
 		Session session = sessionFactory.getCurrentSession();
 		session.beginTransaction();
-		
-		Resource r = (Resource) session.createQuery("from Resource where id = 3").uniqueResult();
-		
-		
-		session.getTransaction().commit();
+		session.refresh(r);
 		int size = r.getEvents().size();
 		System.out.println(size);
 		for(int i = 0; i < size; i++) {
 			System.out.println(i + ": " + r.getEvents().get(i).getTitle());
 		}
+	}
+	
+	private static Resource getResource(SessionFactory sessionFactory) {
+		Session session = sessionFactory.getCurrentSession();
+		session.beginTransaction();
+		Resource r = (Resource) session.get(Resource.class, 3); 
+				//(Resource) session.createQuery("from Resource where id = 3").uniqueResult();
+		//Hibernate.initialize(r.getEvents());
+		session.getTransaction().commit();
+		return r;
 	}
 	
 	private static void testOneToOne(SessionFactory sessionFactory) {
