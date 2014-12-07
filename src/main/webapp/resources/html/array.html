@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<form action="../../array" method="post">
+name:<input type="text" name="name"/> <br/>
+one address: 
+<input type="hidden" name="address" value="demo.jason.springhello.AddressEmail"/>
+<input type="text" name="address.location" id="addresses.location"/> 
+<input type="text" name="addresse.postcode" id="addresses.postcode"/> <br/>
+<hr/>
+address 1:
+<input type="hidden" name="addresses[0]" value="demo.jason.springhello.AddressEmail"/>
+<input type="text" name="addresses[0].location" id="addresses0.location"/> 
+<input type="text" name="addresses[0].postcode" id="addresses0.postcode"/> 
+Email: <input type="text" name="addresses[0].email" id="addresses0.email"/>
+<br/>
+<input type="hidden" name="addresses[1]" value="demo.jason.springhello.AddressMobile"/>
+address 2:<input type="text" name="addresses[1].location"" id="addresses1.location"/> 
+<input type="text" name="addresses[1].postcode" id="addresses1.postcode"/> 
+Mobile:<input type="text" name="addresses[1].mobile" id="addresses1.mobile"/>
+<br/>
+
+address 3:
+<input type="hidden" name="addresses[2]" value="demo.jason.springhello.AddressEmail"/>
+<input type="text" name="addresses[2].location"" id="addresses4.location"/> 
+<input type="text" name="addresses[2].postcode"" id="addresses4.postcode"/> 
+Email:<input type="text" name="addresses[2].email" id="addresses4.email"/> <br/>
+<input type="submit">
+</form>
+</body>
+</html>
